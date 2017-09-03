@@ -1,0 +1,51 @@
+{
+    "name": "swm-grid",
+    "version": "0.0.0",
+    "description": "SWM Grid",
+    "main": "index.js",
+    "typings": "index.d.ts",
+    "scripts": {
+        "build": "rimraf build && copy package.json ./build && tsc",
+        "dist": "cd build && npm publish",
+        "storybook": "start-storybook -p 9001 -c storybook",
+        "test": "jest --config ./jest.config.json"
+    },
+    "repository": "https://github.com/luke-john/swm-grid.git",
+    "author": "Luke John <swm-grid@lukejohn.me>",
+    "license": "MIT",
+    "peerDependencies": {
+        "glamor": "^2.20.25",
+        "glamorous": "^3.21.0",
+        "react": "^15.5.4"
+    },
+    "devDependencies": {
+        "@types/node": "^8.0.26",
+        "@types/storybook__addon-knobs": "^3.2.0",
+        "@types/storybook__addon-links": "^3.0.1",
+        "@types/storybook__addon-notes": "^3.0.1",
+        "@types/storybook__addon-options": "^3.2.0",
+        "@types/storybook__react": "^3.0.5",
+        "@storybook/addon-actions": "^3.2.6",
+        "@storybook/addon-knobs": "^3.2.8",
+        "@storybook/addon-links": "^3.2.6",
+        "@storybook/addon-notes": "^3.2.7",
+        "@storybook/react": "^3.2.8",
+        "@types/jest": "^20.0.8",
+        "@types/react": "^16.0.5",
+        "@types/react-dom": "^15.5.4",
+        "@types/webpack": "^3.0.10",
+        "awesome-typescript-loader": "^3.2.3",
+        "babel-loader": "^7.1.2",
+        "copy": "^0.3.1",
+        "extract-text-webpack-plugin": "^3.0.0",
+        "glamor": "^2.20.40",
+        "glamorous": "^4.7.0",
+        "jest": "^20.0.4",
+        "react": "^15.6.1",
+        "react-dom": "^15.6.1",
+        "rimraf": "^2.6.1",
+        "ts-jest": "^20.0.14",
+        "ts-loader": "^2.3.4",
+        "typescript": "^2.5.2"
+    }
+}

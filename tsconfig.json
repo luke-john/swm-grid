@@ -1,0 +1,45 @@
+{
+    "compilerOptions": {
+        "removeComments": false,
+        "sourceMap": true,
+        "inlineSources": false,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "jsx": "react",
+        "target": "es5",
+        "sourceRoot": "/",
+        "declaration": true,
+        "baseUrl": "./src",
+        "outDir": "./build",
+        "lib": [
+            "dom",
+            "es5",
+            "es2015.iterable",
+            "es2015.symbol",
+            "es2015.symbol.wellknown",
+            "es2015.promise"
+        ],
+        "typeRoots": [
+            "node_modules/@types",
+            "src/@types"
+        ],
+        "noEmit": false,
+        "strict": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true
+    },
+    "include": [
+        "src/**/*.d.ts",
+        "src/**/*.ts",
+        "src/**/*.tsx"
+    ],
+    "exclude": [
+        "node_modules",
+        "build/**/*",
+        "src/**/*.test.ts",
+        "src/**/*.test.tsx",
+        "src/**/*.story.ts",
+        "src/**/*.story.tsx"
+    ]
+}
