@@ -13,12 +13,14 @@ module.exports = function (config, env) {
 
     var config = genDefaultConfig(config, env);
 
+    // Add typescript support
     config.module.rules.push({
         test: /\.tsx?$/,
         exclude: [
             /node_modules/
         ],
         include: [
+            /documentation/,
             /stories/,
             /src/,
             /storybook/,
@@ -26,12 +28,18 @@ module.exports = function (config, env) {
         loader: "awesome-typescript-loader",
         query: {
             configFileName: "./tsconfig.storybook.json"
-        }
+        },
     })
-
     config.resolve.extensions.push(".tsx")
     config.resolve.extensions.push(".ts")
     config.resolve.extensions.push(".js")
+
+    // Add markdown support
+    config.module.rules.push({
+        test: /\.md$/,
+        loader: "raw-loader"
+    })
+    config.resolve.extensions.push(".md")
 
     return config
 }

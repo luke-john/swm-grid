@@ -21,7 +21,7 @@
         ],
         "typeRoots": [
             "node_modules/@types",
-            "src/@types"
+            "@types"
         ],
         "noEmit": false,
         "strict": true,
@@ -30,6 +30,9 @@
         "noUnusedParameters": true
     },
     "include": [
+        "documentation/**/*.d.ts",
+        "documentation/**/*.ts",
+        "documentation/**/*.tsx",
         "src/**/*.d.ts",
         "src/**/*.ts",
         "src/**/*.tsx"

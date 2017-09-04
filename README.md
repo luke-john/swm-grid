@@ -2,18 +2,66 @@
 
 # swm-grid
 
+## The problem
+
+You need to setup configurable grids in your application and you want them to be cross browser accesible, flexible and simple.
+
 ## Installation
 
 **This component is currently under development and is not yet released...**
+
+```sh
+yarn add swm-grid
+```
 
 ## Usage
 
 Things are still in flux a little bit (looking for feedback).
 
-```js
-import { createGrid }  from 'swm-grid'
+### createCrid component factory
 
-const { Grid, Row, Column } = createGrid({
+The `createGrid` function is the main (only) export. It allows you to create the grid components which are `glamorous` components with a number of styles and style arguments setup.
+
+```js
+import { createGrid } from 'swm-grid'
+
+const { Grid, Row, Col } = createGrid({/* createGrid options */})
+```
+
+`createGrid` allows you to invoke it with options that it uses to return `Grid`, `Row` and `Col` components based off those options.
+
+#### createGrid options
+
+```ts
+export type Margin =
+    | [number] // vertical & horizontal
+    | [number, number] // vertical, horizontal
+
+export type Gutter =
+    | [number] // vertical & horizontal
+    | [number, number] // vertical, horizontal
+    | [number, number, number, number] // top, right, bottom, left
+
+export type GridVisualOptions = {
+    margin: Margin,
+    gutter: Gutter,
+    wrap: boolean,
+    centre?: boolean,
+}
+
+export interface GridBreakpointOptions extends GridVisualOptions {
+    minWidth: number
+}
+
+export type GridOptions = {
+    maxWidth?: number
+    initial: GridVisualOptions
+    breakpoints?: GridBreakpointOptions[],
+}
+```
+
+```js
+const { Grid, Row, Col } = createGrid({
     maxWidth: 1200,
     initial: {
         gutter: [5, 10],
@@ -35,274 +83,108 @@ const { Grid, Row, Column } = createGrid({
         },
     ],
 })
-
-(
-    <Grid
-        css={{
-            background: 'gainsboro',
-        }}
-    >
-        <Row
-            initial={{
-                alignment: 'right',
-            }}
-            breakpoints={[
-                {alignment: 'left'},
-                {alignment: 'right'},
-            ]}
-            css={{
-                background: 'darkgray',
-            }}
-        >
-            <Column
-                initial={{
-                    ratio: [1, 2],
-                }}
-                breakpoints={[
-                    {ratio: [1, 2]},
-                    {ratio: [1, 2]},
-                ]}
-                css={{
-                    background: 'lightslategrey',
-                }}
-            >
-                Column 1
-            </Column>
-            <Column
-                initial={{
-                    ratio: [1, 2],
-                }}
-                breakpoints={[
-                    {ratio: [1, 2]},
-                    {ratio: [1, 2]},
-                ]}
-                css={{
-                    background: 'lightslategrey',
-                }}
-            >
-                Column 2
-            </Column>
-        </Row>
-        <Row
-            initial={{
-                alignment: 'left',
-            }}
-            css={{
-                background: 'darkgray',
-            }}
-        >
-            <Column
-                initial={{
-                    ratio: [1, 3],
-                }}
-                breakpoints={[
-                    {ratio: [1, 3]},
-                    {ratio: [1, 3]},
-                ]}
-                css={{
-                    background: 'lightslategrey',
-                }}
-            >
-                Column 1
-            </Column>
-            <Column
-                initial={{
-                    ratio: [2, 3],
-                }}
-                breakpoints={[
-                    {ratio: [2, 3]},
-                    {ratio: [2, 3]},
-                ]}
-                css={{
-                    background: 'lightslategrey',
-                }}
-            >
-                Column 2
-            </Column>
-        </Row>
-        <Row
-            initial={{
-                alignment: 'left',
-            }}
-            css={{
-                background: 'darkgray',
-            }}
-        >
-            <Column
-                initial={{
-                    ratio: [1, 1],
-                    gutterBleed: -20,
-                    flexGrow: 1,
-                }}
-                breakpoints={[
-                    {
-                        ratio: [1, 1],
-                        gutterBleed: -20,
-                        flexGrow: 1,
-                    },
-                    {
-                        ratio: [1, 1],
-                        gutterBleed: -20,
-                        flexGrow: 1,
-                    },
-                ]}
-                css={{
-                    background: 'lightslategrey',
-                }}
-            >
-                Column 1
-            </Column>
-        </Row>
-        <Row
-            initial={{
-                alignment: 'left',
-            }}
-            css={{
-                background: 'darkgray',
-            }}
-        >
-            <Column
-                initial={{
-                    ratio: [1, 2],
-                }}
-                breakpoints={[
-                    {ratio: [1, 2]},
-                    {ratio: [1, 2]},
-                ]}
-                css={{
-                    background: 'lightslategrey',
-                }}
-            >
-                <Row
-                    initial={{
-                        alignment: 'left',
-                    }}
-                    css={{
-                        background: 'white',
-                    }}
-                >
-                    <Column
-                        initial={{
-                            ratio: [1, 1],
-                            gutterOverride: [0, 0, 5, 0],
-                            flexGrow: 1,
-                        }}
-                        breakpoints={[
-                            {
-                                ratio: [1, 1],
-                                gutterOverride: [0, 0, 5, 0],
-                                flexGrow: 1,
-                            },
-                            {
-                                ratio: [1, 1],
-                                gutterOverride: [0, 0, 5, 0],
-                                flexGrow: 1,
-                            },
-                        ]}
-                        css={{
-                            background: 'yellow',
-                        }}
-                    >
-                        Column 1
-                    </Column>
-                    <Column
-                        initial={{
-                            ratio: [1, 1],
-                            gutterOverride: [5, 0, 0, 0],
-                            flexGrow: 1,
-                        }}
-                        breakpoints={[
-                            {
-                                ratio: [1, 1],
-                                gutterOverride: [5, 0, 0, 0],
-                                flexGrow: 1,
-                            },
-                            {
-                                ratio: [1, 1],
-                                gutterOverride: [5, 0, 0, 0],
-                                flexGrow: 1,
-                            },
-                        ]}
-                        css={{
-                            background: 'lightslategrey',
-                        }}
-                    >
-                        Column 2
-                    </Column>
-                </Row>
-            </Column>
-            <Column
-                initial={{
-                    ratio: [1, 2],
-                }}
-                breakpoints={[
-                    {ratio: [1, 2]},
-                    {ratio: [1, 2]},
-                ]}
-                css={{
-                    background: 'lightslategrey',
-                }}
-            >
-                Large Column!
-            </Column>
-        </Row>
-        <Row
-            initial={{
-                alignment: 'left',
-            }}
-            css={{
-                background: 'darkgray',
-            }}
-        >
-            <Column
-                initial={{
-                    ratio: [1, 3],
-                }}
-                breakpoints={[
-                    {ratio: [1, 3]},
-                    {ratio: [1, 3]},
-                ]}
-                css={{
-                    background: 'lightslategrey',
-                }}
-            >
-                Column 1
-            </Column>
-        </Row>
-        <Row
-            initial={{
-                alignment: 'left',
-            }}
-        >
-            <Column
-                initial={{
-                    ratio: [1, 1],
-                }}
-                breakpoints={[
-                    {ratio: [1, 1]},
-                    {ratio: [1, 1]},
-                ]}
-                css={{
-                    background: '#ccc',
-                }}
-            >
-                Fluid
-            </Column>
-            <Column
-                initial={{
-                    ratio: [1, 1],
-                }}
-                breakpoints={[
-                    {ratio: [1, 1]},
-                    {ratio: [1, 1]},
-                ]}
-                css={{
-                    background: '#ccc',
-                }}
-            >
-                Fixed
-            </Column>
-        </Row>
-    </Grid>
-)
 ```
+
+### swm-grid components
+
+These are the glamorous components returned by the createGrid factory.
+
+#### Grid
+
+##### Props
+
+```ts
+export interface GridProps {
+    /**
+     * backgroundColor of grid
+     * default: 'transparent'
+     */
+     backgroundFill?: string
+}
+```
+
+##### Usage
+
+```jsx
+<Grid>
+    {/* Row components */}
+</Grid>
+```
+
+#### Row
+
+##### Props
+
+```ts
+export type RowVisualProps = {
+    alignment?: 'left' | 'right',
+    alignItems?: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch',
+}
+
+export type RowProps = {
+    initial?: RowVisualProps
+    breakpoints?: RowVisualProps[],
+}
+```
+
+##### Usage
+
+```
+<Row>
+    {/* Col components */}
+</Row>
+```
+
+#### Col
+
+##### Props
+
+```ts
+export type ColVisualProps = {
+    /**
+     * `[antecedent, consequent]`
+     * ie. [1, 2] = 1/2 = 50%
+     */
+    ratio: [number, number],
+    gutterBleed?: number,
+    gutterOverride?: Gutter,
+    flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse',
+    flexGrow?: number,
+    fixedWidth?: number
+    isFluid?: boolean,
+    isHidden?: boolean,
+    wrapContents?: boolean,
+    isFlushToTop?: boolean,
+    order?: number,
+}
+```
+
+##### Usage
+
+```js
+<Column
+    initial={{
+        ratio: [1, 1],
+        gutterBleed: -20,
+        flexGrow: 1,
+    }}
+    breakpoints={[
+        {
+            ratio: [1, 1],
+            gutterBleed: -20,
+            flexGrow: 1,
+        },
+        {
+            ratio: [1, 1],
+            gutterBleed: -20,
+            flexGrow: 1,
+        },
+    ]}
+>
+    {/* Column contents */}
+</Column>
+```
+
+## License
+
+MIT
