@@ -120,6 +120,10 @@ const getGridStyles = (
 }
 
 export interface GridProps {
+    /**
+     * backgroundColor of grid
+     * default: 'transparent'
+     */
      backgroundFill?: string
 }
 
