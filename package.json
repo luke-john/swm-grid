@@ -1,6 +1,6 @@
 {
     "name": "swm-grid",
-    "version": "0.0.4-pre",
+    "version": "0.0.4",
     "description": "SWM Grid",
     "main": "dist/index.js",
     "jsnext:main": "esnext/index.js",
