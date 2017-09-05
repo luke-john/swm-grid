@@ -1,14 +1,14 @@
 {
     "name": "swm-grid",
-    "version": "0.0.3",
+    "version": "0.0.4-pre",
     "description": "SWM Grid",
     "main": "dist/index.js",
     "jsnext:main": "esnext/index.js",
     "typings": "typings/index.d.ts",
     "scripts": {
         "pre:build": "rimraf build && copy package.json ./build",
-        "build:main": "tsc --outDir ./build/dist --module UMD --declarationDir ./build/typings",
-        "build:es": "tsc --target esnext --outDir ./build/esnext --module UMD --declaration false",
+        "build:main": "tsc --outDir ./build/dist --declarationDir ./build/typings",
+        "build:es": "tsc --target esnext --outDir ./build/esnext --declaration false",
         "build": "yarn run pre:build && yarn run build:main && yarn run build:es",
         "dist": "cd build && npm publish",
         "storybook": "start-storybook -p 9001 -c storybook",
