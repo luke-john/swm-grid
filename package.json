@@ -1,6 +1,6 @@
 {
     "name": "swm-grid",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "SWM Grid",
     "main": "dist/glamorous.cjs.js",
     "jsnext:main": "dist/glamorous.es.js",
