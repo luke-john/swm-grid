@@ -10,7 +10,6 @@
         "sourceRoot": "/",
         "declaration": true,
         "baseUrl": "./src",
-        "outDir": "./build",
         "lib": [
             "dom",
             "es5",
@@ -30,9 +29,6 @@
         "noUnusedParameters": true
     },
     "include": [
-        "documentation/**/*.d.ts",
-        "documentation/**/*.ts",
-        "documentation/**/*.tsx",
         "src/**/*.d.ts",
         "src/**/*.ts",
         "src/**/*.tsx"
